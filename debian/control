@@ -1,0 +1,15 @@
+Source: colorlog
+Maintainer: Bart Vanbrabant <bart@vanbrabant.eu>
+Section: python
+Priority: optional
+Build-Depends: python3-all (>= 3.2), debhelper (>= 7), python3-setuptools
+Standards-Version: 3.9.5
+
+Package: python3-colorlog
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Log formatting with colors!
+ ===========================
+ Log formatting with colors!
+ ===========================
+

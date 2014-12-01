@@ -1,0 +1,18 @@
+colorlog (2.4.0-2) trusty; urgency=medium
+
+  * python3 only
+
+ -- Bart Vanbrabant <bart@vanbrabant.eu>  Mon, 15 Sep 2014 14:53:36 +0000
+
+
+colorlog (2.4.0-1ubuntu1) trusty; urgency=medium
+
+  * Add dependency 
+
+ -- Bart Vanbrabant <bart@vanbrabant.eu>  Mon, 15 Sep 2014 14:53:36 +0000
+
+colorlog (2.4.0-1) trusty; urgency=low
+
+  * source package automatically created by stdeb 0.6.0+git
+
+ -- Bart Vanbrabant <bart@vanbrabant.eu>  Mon, 15 Sep 2014 14:15:20 +0000
