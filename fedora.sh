@@ -10,7 +10,7 @@ yum-builddep $SRPM
 
 RPMS=$(rpmbuild --rebuild $SRPM | grep -e "^Wrote:" | tr -d " " | cut -f 2 -d :)
 
-cp $SRPM .
+cp $SRPM $1
 for RPM in $RPMS; do
-    cp $RPM .
+    cp $RPM $1
 done
