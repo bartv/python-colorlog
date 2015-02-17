@@ -1,16 +1,20 @@
 #!/bin/bash
 
+NAME=$(basename $(pwd))
 DIST=fedora-21-x86_64
-NAME=python-colorlog
+
+if [[ $# -eq 1 ]]; then
+    DIST=$1
+fi
 
 rm -rf sources srpm rpm
 
 #rpmdev-setuptree
-mkdir -p sources
+mkdir -p sources || exit 1
 
-spectool -C sources -g $NAME.spec
-mock -r $DIST --buildsrpm --spec $NAME.spec --sources sources/*
-cp -a /var/lib/mock/$DIST/result srpm
+/usr/bin/spectool -C sources -g $NAME.spec || exit 1
+/usr/bin/mock -r $DIST --buildsrpm --spec $NAME.spec --sources sources/* || exit 1
+cp -a /var/lib/mock/$DIST/result srpm || exit 1
 
-mock -r $DIST srpm/$NAME-*.src.rpm
-cp -a /var/lib/mock/$DIST/result rpm
+/usr/bin/mock -r $DIST srpm/$NAME-*.src.rpm || exit 1
+cp -a /var/lib/mock/$DIST/result rpm || exit 1
