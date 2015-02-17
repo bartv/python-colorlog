@@ -1,16 +1,16 @@
 #!/bin/bash
 
+DIST=fedora-21-x86_64
 NAME=python-colorlog
 
-rpmdev-setuptree
-spectool -R -g $NAME.spec
-SRPM=$(rpmbuild -bs $NAME.spec | grep -e "^Wrote:" | tr -d " " | cut -f 2 -d :)
-echo $SRPM
-yum-builddep $SRPM
+rm -rf sources srpm rpm
 
-RPMS=$(rpmbuild --rebuild $SRPM | grep -e "^Wrote:" | tr -d " " | cut -f 2 -d :)
+#rpmdev-setuptree
+mkdir -p sources
 
-cp $SRPM $1
-for RPM in $RPMS; do
-    cp $RPM $1
-done
+spectool -C sources -g $NAME.spec
+mock -r $DIST --buildsrpm --spec $NAME.spec --sources sources/*
+cp -a /var/lib/mock/$DIST/result srpm
+
+mock -r $DIST srpm/$NAME-*.src.rpm
+cp -a /var/lib/mock/$DIST/result rpm
